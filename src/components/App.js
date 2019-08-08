@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from './spinner';
-import {VictoryChart, VictoryZoomContainer, VictoryLine, VictoryTheme, VictoryLegend, VictoryScatter} from 'victory';
+import {VictoryChart, VictoryZoomContainer, VictoryLine, VictoryTheme, VictoryLegend, VictoryScatter, VictoryTooltip} from 'victory';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -92,9 +92,11 @@ class App extends React.Component {
 					data={this.state.EUR_USD.data}
 				/>
 				<VictoryScatter
-					style={{ data: {fill: "#ff6347"} }}
+					style={{ data: {fill: "#ff6347"}, labels: {fill: "#ff6347"} }}
 					size={3}
 					data={this.state.EUR_USD.data}
+					labels={(d) => d.y}
+					labelComponent={<VictoryTooltip/>}
 				/>
 
 				<VictoryLine
@@ -104,9 +106,11 @@ class App extends React.Component {
 					data={this.state.EUR_BTC.data}
 				/>
 				<VictoryScatter
-					style={{ data: {fill: "#8BC34A"} }}
+					style={{ data: {fill: "#8BC34A"}, labels: {fill: "#8BC34A"} }}
 					size={3}
 					data={this.state.EUR_BTC.data}
+					labels={(d) => d.y}
+    				labelComponent={<VictoryTooltip/>}
 				/>
 
 				<VictoryLine
@@ -116,9 +120,11 @@ class App extends React.Component {
 					data={this.state.EUR_ILS.data}
 				/>
 				<VictoryScatter
-					style={{ data: {fill: "#006064"} }}
+					style={{ data: {fill: "#006064"}, labels: {fill: "#006064"} }}
 					size={3}
 					data={this.state.EUR_ILS.data}
+					labels={(d) => d.y}
+    				labelComponent={<VictoryTooltip/>}
 				/>
 		  </VictoryChart>
 	  </div>
